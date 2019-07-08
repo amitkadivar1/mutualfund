@@ -13,28 +13,35 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col col-md-8 offset-md-2 mt-5 ">
+            <div class="col col-md-10 offset-md-1 mt-5 ">
                 <a href="{% url 'mutualfund:index' %}"><button class="btn btn-primary">Calculate Mutual Fund</button></a>
             <h1>List Of Return Mutual Fund</h1>
-
                 {% if dictname %}
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">Code</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Net Asset Value</th>
-                            <th scope="col">Return Fund</th>
+                            <th scope="col">NAV</th>
+                            <th scope="col">InitialAmount</th>
+                            <th scope="col">Return Fund(%)</th>
+                            <th scope="col">Return Fund(Rs)</th>
+                            <th scope="col">InitialDate</th>
                             <th scope="col">Date</th>
                         </tr>
                     </thead>
                     <tbody>
+
                         {% for i in dictname %}
+                        
                         <tr>
                             <th scope="row">{{i.Code}}</th>
                             <td>{{i.Name}}</td>
                             <td>{{i.Nav}}</td>
+                            <td>{{i.amount}}</td>
                             <td>{{i.ReturnFund}}</td>
+                            <td>{{i.ReturnFundValue}}</td>
+                            <td>{{i.InitialData}}</td>
                             <td>{{i.Date}}</td>
                         </tr>
                         {% endfor %}

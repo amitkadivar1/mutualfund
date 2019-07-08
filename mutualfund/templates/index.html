@@ -8,25 +8,33 @@
     <title>Mutual Fund</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
 </head>
 
 <body>
     <div class="container">
         <div class="row">
-       
+
             <div class="col col-md-8 offset-md-3 mt-5 ">
                 <h1>Mutual Fund Calculator</h1>
-                    <form action="nav" method='post'>
+                <form action="nav" method='post'>
                     {% csrf_token %}
-                            <div class="form-group">
-                              <label for="amountlabel">Enter Invested Money</label>
-                              <input type="number" required class="form-control" placeholder="Enter Amount" name="amount">
-                              <label for="year">Enter Invested Money</label>
-                              <input type="number" required class="form-control" placeholder="Enter Year" name="year">
-                            <button type='submit' class="btn btn-success">Calculator</button>
-                            </div>
-                            
-                          </form>
+                    <div class="form-group">
+                        <label for="amountlabel">Enter Invested Money</label>
+                        <input type="number" required class="form-control" placeholder="Enter Amount" name="amount">
+                        <label for="year">Enter Invested Money</label>
+                        <input type="number" required class="form-control" placeholder="Enter Year" name="year">
+                        <select name='plan' data-search="true" placeholder="Select Your Plan">
+                            {% for i in datadict %}
+                            <option value={{i.code}}>{{i.name}}</option>
+                            {% endfor %}
+                        </select>
+
+                        <button type='submit' class="btn btn-success  ml-5">Calculator</button>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>
@@ -40,6 +48,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+
+    <script>
+        $('select').selectstyle({
+            width: 250,
+            height: 300,
+        });
+        $('select').selectstyle({
+            onchange: function (val) { }
+        });
+    </script>
 </body>
 
 </html>
